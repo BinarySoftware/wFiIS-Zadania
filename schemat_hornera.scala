@@ -24,24 +24,26 @@
   *
   */
  object Main {
-   def nonEmpty<T>(A:List[T]): Bool = {
+   def nonEmpty[A](A:List[T]): Bool = {
      A match {
        case Nil => false
        case _   => true
      }
    }
 
-   def schemat_hornera(A:List[Double], x:Double): Double = {
-     if(nonEmpty(A)) {
-       inner(A,x)
-     }
-
+   def schemat_hornera(A:List[Double], x:Double): Option[Double] = {
      @tailrec def inner(A:List[Double], x:Double): Double = {
        var s : Double = 0.0
        if(A.length > 1) {
          s = Schemat_Hornera(A.tail, x)
        }
        s*x + A.head
+     }
+
+     if(nonEmpty(A)){
+      Some(inner(A,x))
+     } else { 
+      None 
      }
    }
  }
