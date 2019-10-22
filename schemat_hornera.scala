@@ -28,18 +28,17 @@ import scala.collection.immutable._
      }
    }
 
-   def schemat_hornera(A:List[Double], x:Double): Option[Double] = {
-     def inner(A:List[Double], x:Double): Double = {
-       var s : Double = 0.0
-       if(nonEmpty[Double](A.tail)) {
+   def schemat_hornera[T: Numeric](A:List[T], x:T): Option[Double] = {
+     def inner(A:List[T], x:T): Double = {
+       var s: Double = 0.0
+       if(nonEmpty[T](A.tail)) {
          s = inner(A.tail, x)
-         println("A : " + A)
        }
-       s = s*x + A.head
+       s = s*implicitly[Numeric[T]].toDouble(x) + implicitly[Numeric[T]].toDouble(A.head)
        s
      }
 
-     if(nonEmpty[Double](A)){
+     if(nonEmpty[T](A)){
       Some(inner(A,x))
      } else { 
       None 
@@ -47,10 +46,20 @@ import scala.collection.immutable._
    }
 
    def main(args: Array[String]): Unit = {
-     val t : List[Double] = List(2.0,3.0,5.0,1.0)
+     /*
+      * Test 1 - powinno dać 141.5
+      */
+     val t : List[Double] = List(2.0,3.0,5.0,1.5)
      val x : Double = 3.5
      /* Potrzeba odwrócić listę dla zamierzonego działania head */
      val s : Option[Double] = schemat_hornera(t.reverse,x)
-     println("2x^3 + 3x^2 + 5x + 1 dla x = 3.5 to : " + s)
+     println("2x^3 + 3x^2 + 5x + 1.5 dla x = 3.5 to : " + s)
+
+     /*
+      * Test 2 - liczba binarna 101010 - 42
+      */
+     val bin : List[Int] = List(1,0,1,0,1,0)
+     val dec : Option[Double] = schemat_hornera(bin.reverse,2)
+     println("101010 : " + dec)
    }
  }
