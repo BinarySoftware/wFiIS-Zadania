@@ -1,7 +1,7 @@
 import scala.collection.immutable._
 
 /**
-  * [[Schemat_Hornera(A,x)]]
+  * [[schemat_hornera(A,x)]]
   *
   * @param A - Lista współczynnikow wielomianu, od
   *            elementu przy najwyzszej potedze
@@ -18,7 +18,9 @@ import scala.collection.immutable._
   *
   * Podana funkcja wykozystuje specyficzne funkcje dla jezyka
   * scala do operowania na tablicach, tj. Tail - zwraca tablice
-  * bez 1. elementu, oraz head - 1. element tablicy.
+  * bez 1. elementu, oraz head - 1. element tablicy, lecz od prawej
+  * strony, więc przed uruchomieniem funkcji odwracam kolejność elementów
+  * w liście
   */
  object Main {
    def nonEmpty[T](A:List[T]): Boolean = {
@@ -69,3 +71,17 @@ import scala.collection.immutable._
      println("f puste od x = 3.5 : " + b)
    }
  }
+
+ /*
+  * Pseudokod bez rekurencji, z while
+  *
+  * Schemat_Hornera(A,x)
+  *   n <- A.count
+  *   w <- A[n-1]*x
+  *   i <- 0
+  *   while i <= n-2
+  *     w <- x*(w*A[n-1-i])
+  *     i <- i+1
+  *   w <- w + A[0] 
+  *   return w
+  */
