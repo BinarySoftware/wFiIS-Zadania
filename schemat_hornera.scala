@@ -61,5 +61,11 @@ import scala.collection.immutable._
      val bin : List[Int] = List(1,0,1,0,1,0)
      val dec : Option[Double] = schemat_hornera(bin.reverse,2)
      println("101010 : " + dec)
+
+     /*
+      * Test 3 - brak elementow w liscie
+      */
+     val b : Option[Double] = schemat_hornera(List(),x)
+     println("f puste od x = 3.5 : " + b)
    }
  }
