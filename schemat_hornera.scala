@@ -17,14 +17,9 @@
   * Podana funkcja wykozystuje specyficzne funkcje dla jezyka
   * scala do operowania na tablicach, tj. Tail - zwraca tablice
   * bez 1. elementu, oraz head - 1. element tablicy.
-  *
-  * oznaczenie @tailrec inforrmuje kompilator iz ma do czynienia z
-  * rekurencją ogonową, w celu zażegnania problemu z JVM i nadmiarem
-  * na stosie ( stack overflow )
-  *
   */
  object Main {
-   def nonEmpty[A](A:List[T]): Bool = {
+   def nonEmpty[T](A:List[T]): Boolean = {
      A match {
        case Nil => false
        case _   => true
@@ -32,18 +27,24 @@
    }
 
    def schemat_hornera(A:List[Double], x:Double): Option[Double] = {
-     @tailrec def inner(A:List[Double], x:Double): Double = {
+     def inner(A:List[Double], x:Double): Double = {
        var s : Double = 0.0
-       if(A.length > 1) {
-         s = Schemat_Hornera(A.tail, x)
+       if(nonEmpty[Double](A.tail)) {
+         s = inner(A.tail, x)
        }
        s*x + A.head
      }
 
-     if(nonEmpty(A)){
+     if(nonEmpty[Double](A)){
       Some(inner(A,x))
      } else { 
       None 
      }
+   }
+
+   def main(args: Array[String]): Unit = {
+     val t : List[Double] = List(2.0,3.0,5.0,1.0)
+     val x : Double = 3.5
+     println("2x^3 + 3x^2 + 5x + 1 dla x = 3 to : " + schemat_hornera(t, x))
    }
  }
