@@ -1,3 +1,5 @@
+import scala.collection.immutable._
+
 /**
   * [[Schemat_Hornera(A,x)]]
   *
@@ -31,8 +33,11 @@
        var s : Double = 0.0
        if(nonEmpty[Double](A.tail)) {
          s = inner(A.tail, x)
+         println("A : " + A)
        }
-       s*x + A.head
+       s = s*x + A.head
+       println(s)
+       s
      }
 
      if(nonEmpty[Double](A)){
@@ -45,6 +50,10 @@
    def main(args: Array[String]): Unit = {
      val t : List[Double] = List(2.0,3.0,5.0,1.0)
      val x : Double = 3.5
-     println("2x^3 + 3x^2 + 5x + 1 dla x = 3 to : " + schemat_hornera(t, x))
+     /* 
+      * Potrzeba odwrócić listę dla zamierzonego działania head
+      */
+     val s : Option[Double] = schemat_hornera(t.reverse,x)
+     println("2x^3 + 3x^2 + 5x + 1 dla x = 3.5 to : " + s)
    }
  }
