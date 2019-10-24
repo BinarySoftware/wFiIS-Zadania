@@ -1,0 +1,39 @@
+
+###########
+## Scala ##
+###########
+
+target/
+*.class
+*.log
+
+############
+## System ##
+############
+
+# OSX
+.DS_Store
+*.DS_Store
+
+############
+## Images ##
+############
+
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.psd
+
+######################
+## Tooling Specific ##
+######################
+
+.idea/
+*.swp
+.projections.json
+
+#########
+## IDE ##
+#########
+.editorconfig
