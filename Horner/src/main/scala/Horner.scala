@@ -47,6 +47,17 @@ object Horner {
       None
     }
   }
+
+  def schematHorneraWhile(A: List[Double], x: Double): Option[Double] = {
+    val n : Int = A.length
+    var w : Double = A(0) * x
+    var i : Int = 1
+    while (i <= n-2) {
+      w = x * (w + A(i))
+      i = i + 1
+    }
+    Some(w + A(n-1))
+  }
 }
 
 /**
@@ -54,11 +65,11 @@ object Horner {
   *
   * Schemat_Hornera(A,x)
   *   n <- A.count
-  *   w <- A[n-1]*x
-  *   i <- 0
+  *   w <- A[0]*x
+  *   i <- 1
   *   while i <= n-2
-  *     w <- x*(w*A[n-1-i])
+  *     w <- x*(w+A[i])
   *     i <- i+1
-  *   w <- w + A[0]
+  *   w <- w + A[n-1]
   *   return w
   */
