@@ -58,6 +58,25 @@ object Horner {
     }
     Some(w + A(n-1))
   }
+
+  def bezHornera(A: List[Double], x: Double): Option[Double] = {
+    def pow(x: Double, p: Double): Double = {
+      var s = 1.0
+      for (_ <- 1 to p.toInt) {
+        s = s*x
+      }
+      s
+    }
+
+    val n : Int = A.length
+    var w : Double = 0
+    var i : Int = 0
+    while (i <= n-1) {
+      w = w + A(i)*pow(x,n-1-i)
+      i = i + 1
+    }
+    Some(w)
+  }
 }
 
 /**
