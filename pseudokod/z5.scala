@@ -29,5 +29,15 @@ LinearSearch(A,x) // Tablica A o dł. n i szukany element x
         break // moze zostac zastosowane po pierwszym znalezionym X aby zredukowac ilosc powtorzen petli
   return s
 
-BinarySearch(A,x) // analogicznie, lecz z posortowaną tablicą
-  
+
+// funkcja wykorzystująca wywołanie rekurencyjne na posortowanej tablicy
+// do znalezienia indeksu elementu x w tablicy A przy pomocy dwóch pomocniczych
+// funkcji : first i last, slużących do stworzenia nowej tablicy z pierwszych
+// lub ostatnich n elementów tablicy wejściowej
+BinarySearch(A,n,x)
+  m <- floor(length[A]/2)
+  if A[m] = x 
+    then return m
+    else if A[M] < x
+      then BinarySearch(A.first(m),x)
+      else BinarySearch(A.last(m),x)
