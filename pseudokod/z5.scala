@@ -34,10 +34,15 @@ LinearSearch(A,x) // Tablica A o dł. n i szukany element x
 // do znalezienia indeksu elementu x w tablicy A przy pomocy dwóch pomocniczych
 // funkcji : first i last, slużących do stworzenia nowej tablicy z pierwszych
 // lub ostatnich n elementów tablicy wejściowej
-BinarySearch(A,n,x)
+BinarySearch(A,x) // tablica A, poczatkowa dl. tablicy, szukany
   m <- floor(length[A]/2)
   if A[m] = x 
     then return m
     else if A[M] < x
-      then BinarySearch(A.first(m),x)
-      else BinarySearch(A.last(m),x)
+      then return  BinarySearch(A.first(m),x)
+      else if A[M] > x
+        then c <- BinarySearch(A.last(length[A]-m),x)
+          return length[A] - m + c 
+          // musimy dodac dł. drugiej połowy 
+          // poczatkowej tablicy aby indeks byl poprawny
+        else return Nil
