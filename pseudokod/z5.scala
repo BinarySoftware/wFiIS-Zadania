@@ -12,7 +12,7 @@ Dodaj2U1(A,B) : ([Int],Bool) //Tablice o dlugosci n, zwraca tuple zawierającąj
   if length[C] > length[A]
     then 
       D <- [n]
-      D[0] <- 1 // pusta tablica o 1 na koncu
+      D[0] <- 1 // liczba binarna z 1 na koncu, 0...01
       C <- Dodaj2Binarne(C,D)) // przeniesienie poza znak
       C <- C.tail // porzucenie najstarszego bitu ktory wyszedl poza znak
   overFound  <- false
