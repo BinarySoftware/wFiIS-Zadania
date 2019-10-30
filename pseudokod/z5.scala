@@ -1,6 +1,6 @@
 
 Dodaj2Binarne(A,B):[Int] // Dwie tablice zawierające l. binarnie zapisane
-  C <- [n] // C jest puste o rozmiarze n+1
+  C <- [n+1] // C jest puste o rozmiarze n+1
   for i <- 0 to n-1
     do sum <- A[i] + B[i] + C[i]
     C[i] <- sum % 2
