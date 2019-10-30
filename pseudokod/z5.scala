@@ -1,5 +1,5 @@
 
-Dodaj2Binarne(A,B) // Dwie tablice zawierające l. binarnie zapisane
+Dodaj2Binarne(A,B):[Int] // Dwie tablice zawierające l. binarnie zapisane
   C <- [n + 1] // C jest puste o rozmiarze n+1
   for i <- 1 to n
     do sum <- A[i] + B[i] + C[i]
@@ -19,7 +19,7 @@ Dodaj2U1(A,B) : ([Int],Bool) //Tablice o dlugosci n, zwraca tuple zawierającąj
     then e <- true
   return (c,e)
 
-LinearSearch(A,x) // Tablica A o dł. n i szukany element x
+LinearSearch<T>(A,x:T):Option[Int] // Tablica A o dł. n i szukany element x
   s <- Nil
   for i <- 0 to n-1
     do
@@ -34,12 +34,12 @@ LinearSearch(A,x) // Tablica A o dł. n i szukany element x
 // do znalezienia indeksu elementu x w tablicy A przy pomocy dwóch pomocniczych
 // funkcji : first i last, slużących do stworzenia nowej tablicy z pierwszych
 // lub ostatnich n elementów tablicy wejściowej
-BinarySearch(A,x) // tablica A, poczatkowa dl. tablicy, szukany
+BinarySearch(A,x):Option[Int] // tablica A, poczatkowa dl. tablicy, szukany
   m <- floor(length[A]/2)
   if A[m] = x 
     then return m
     else if A[M] < x
-      then return  BinarySearch(A.first(m),x)
+      then return BinarySearch(A.first(m),x)
       else if A[M] > x
         then c <- BinarySearch(A.last(length[A]-m),x)
           return length[A] - m + c 
