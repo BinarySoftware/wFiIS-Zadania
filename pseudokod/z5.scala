@@ -38,11 +38,11 @@ BinarySearch(A,x):Option[Int] // tablica A, poczatkowa dl. tablicy, szukany
   m <- floor(length[A]/2)
   if A[m] = x 
     then return m
-    else if A[M] < x
+    else if A[M] > x
       then return BinarySearch(A.first(m),x)
-      else if A[M] > x
+      else if A[M] < x
         then c <- BinarySearch(A.last(length[A]-m),x)
           return length[A] - m + c 
           // musimy dodac dł. drugiej połowy 
           // poczatkowej tablicy aby indeks byl poprawny
-        else return Nil
+  return Nil
