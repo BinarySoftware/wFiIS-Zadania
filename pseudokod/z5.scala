@@ -22,14 +22,12 @@ Dodaj2U1(A,B) : ([Int],Bool) //Tablice o dlugosci n, zwraca tuple zawierającąj
 
 
 LinearSearch<T>(A,x:T):Option[Int] // Tablica A o dł. n i szukany element x
-  s <- Nil
   for i <- 0 to n-1
     do
     if A[i] = x 
       then 
-        s <- i
-        break // moze zostac zastosowane po pierwszym znalezionym X aby zredukowac ilosc powtorzen petli
-  return s
+        return i
+  return Nil
 
 
 // funkcja wykorzystująca wywołanie rekurencyjne na posortowanej tablicy
