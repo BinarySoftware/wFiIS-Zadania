@@ -20,3 +20,21 @@ schematu Hornera, zaprezentowanego poniżej
 ```
 ((...((An*x + An-1)*x + An-2) ... )*x + A1)*x + A0
 ```
+
+#### Porównanie różnych podejść 
+
+| Typ        | Dane           | Czas (ns)  |
+| ------------- |:-------------:| -----:|
+| rekurencja      | Binarny | 687851 |
+| rekurencja     | Randomowy      |   8256 |
+| rekurencja bez generyków |  Binarny      |    10254 |
+| rekurencja bez generyków | Randomowy      |    5147 |
+| Pętla while      | Binarny | 10382 |
+| Pętla while     | Randomowy      |   4285 |
+| Łopatologiczne potęgowanie i mnożenie  |  Binarny      |    325671 |
+| Łopatologiczne potęgowanie i mnożenie      |    52681 |
+
+## Min
+
+Prostsza od Hornera funkcja rekurencyjnie szukająca najmniejszej wartości w
+zadanej liśce
