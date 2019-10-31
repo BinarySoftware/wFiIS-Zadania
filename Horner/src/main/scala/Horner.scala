@@ -1,13 +1,6 @@
 import scala.collection.immutable._
 
 object Horner {
-  def nonEmpty[T](A: List[T]): Boolean = {
-    A match {
-      case Nil => false
-      case _   => true
-    }
-  }
-
   /**
     * [[schematHornera(A,x)]]
     *
@@ -36,15 +29,15 @@ object Horner {
   def schematHornera[T: Numeric](A: List[T], x: T): Option[Double] = {
     def inner(A: List[T], x: T): Double = {
       var s: Double = 0.0
-      if (nonEmpty[T](A.tail)) s = inner(A.tail, x)
+      if (A.tail.isEmpty == false) s = inner(A.tail, x)
       s * implicitly[Numeric[T]].toDouble(x) + implicitly[Numeric[T]]
         .toDouble(A.head)
     }
 
-    if (nonEmpty[T](A)) {
-      Some(inner(A.reverse, x))
-    } else {
+    if (A.isEmpty) {
       None
+    } else {
+      Some(inner(A.reverse, x))
     }
   }
 
