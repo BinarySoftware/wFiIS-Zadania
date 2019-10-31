@@ -32,7 +32,7 @@ schematu Hornera, zaprezentowanego poniżej
 | Pętla while      | Binarny | 10382 |
 | Pętla while     | Randomowy      |   4285 |
 | Łopatologiczne potęgowanie i mnożenie  |  Binarny      |    325671 |
-| Łopatologiczne potęgowanie i mnożenie      |    52681 |
+| Łopatologiczne potęgowanie i mnożenie      | Randomowy      |     52681 |
 
 ## Min
 
