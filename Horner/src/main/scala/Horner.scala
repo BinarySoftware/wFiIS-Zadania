@@ -48,6 +48,15 @@ object Horner {
     }
   }
 
+  def schematHorneraBezGenerykow(A: List[Double], x: Double): Option[Double] = {
+    def inner(A: List[Double], x: Double): Double = {
+      var s: Double = 0.0
+      if (!A.tail.isEmpty) s = inner(A.tail, x)
+      s * x + A.head
+    }
+    Some(inner(A.reverse, x))
+  }
+
   def schematHorneraWhile(A: List[Double], x: Double): Option[Double] = {
     val n : Int = A.length
     var w : Double = A(0) * x

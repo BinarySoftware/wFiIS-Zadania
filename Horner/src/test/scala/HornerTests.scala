@@ -1,3 +1,5 @@
+import java.awt.font.NumericShaper
+
 import org.scalatest._
 import Horner._
 import scala.collection.immutable.List
@@ -79,13 +81,54 @@ class HornerTests extends FlatSpec with Matchers {
   (List(0), 4)                      ?= Some(0.0)
 //  (List(3, 0), 4)                 ?= Some(0.0) // Celowy błąd
 
-//  (List(1.0, 0.0, 1.0, 0.0, 1.0, 0.0), 2.0)  ?== Some(42.0)
-//  (List(2.0, 3.0, 5.0, 1.5), 3.5)            ?== Some(141.5)
-//  (List(0.0), 4.0)                           ?== Some(0.0)
-//  (List(2.0, 0.0), 4.0)                      ?== Some(8.0)
+  (List(1.0, 0.0, 1.0, 0.0, 1.0, 0.0), 2.0)  ?== Some(42.0)
+  (List(2.0, 3.0, 5.0, 1.5), 3.5)            ?== Some(141.5)
+  (List(0.0), 4.0)                           ?== Some(0.0)
+  (List(2.0, 0.0), 4.0)                      ?== Some(8.0)
 
-//  (List(1.0, 0.0, 1.0, 0.0, 1.0, 0.0), 2.0)  ?=== Some(42.0)
-//  (List(2.0, 3.0, 5.0, 1.5), 3.5) ?=== Some(141.5)
-//  (List(0.0), 4.0) ?=== Some(0.0)
-//  (List(2.0, 0.0), 4.0) ?=== Some(8.0)
+  (List(1.0, 0.0, 1.0, 0.0, 1.0, 0.0), 2.0)  ?=== Some(42.0)
+  (List(2.0, 3.0, 5.0, 1.5), 3.5) ?=== Some(141.5)
+  (List(0.0), 4.0) ?=== Some(0.0)
+  (List(2.0, 0.0), 4.0) ?=== Some(8.0)
+
+// Measure nanoseconds taken to execute by name argument.
+def measureTime(x: => Unit): Long = {
+  val start = System.nanoTime()
+  x
+  // Calculate how long that took and return the value.
+  (System.nanoTime() - start)
+}
+  println("czas wykonywania algorytmow w nanosekundach")
+  println("czas - rekurencja - Bin:  " + measureTime {
+    schematHornera(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+  })
+
+  println("czas - rekurencja - Rand: " + measureTime {
+    schematHornera(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+  })
+
+  println("czas - bez gen r. - Bin:  " + measureTime {
+    schematHorneraBezGenerykow(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+  })
+
+  println("czas - bez gen r. - Rand: " + measureTime {
+    schematHorneraBezGenerykow(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+  })
+
+  println("czas - while - Bin:       " + measureTime {
+    schematHorneraWhile(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+  })
+
+  println("czas - while - Rand:      " + measureTime {
+    schematHorneraWhile(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+  })
+
+  println("czas - pow - Bin:         " + measureTime {
+    bezHornera(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+  })
+
+  println("czas - pow - Rand:        " + measureTime {
+    bezHornera(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+  })
+  println()
 }
