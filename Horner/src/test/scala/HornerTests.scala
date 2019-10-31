@@ -98,37 +98,39 @@ def measureTime(x: => Unit): Long = {
   // Calculate how long that took and return the value.
   (System.nanoTime() - start)
 }
+  val bin = List(1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0)
+  val rnd = List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5, 23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5)
+
   println("czas wykonywania algorytmow w nanosekundach")
   println("czas - rekurencja - Bin:  " + measureTime {
-    schematHornera(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+    schematHornera[Double](bin, 2)
   })
 
   println("czas - rekurencja - Rand: " + measureTime {
-    schematHornera(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+    schematHornera(rnd, 33.5)
   })
 
   println("czas - bez gen r. - Bin:  " + measureTime {
-    schematHorneraBezGenerykow(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+    schematHorneraBezGenerykow(bin, 2)
   })
 
   println("czas - bez gen r. - Rand: " + measureTime {
-    schematHorneraBezGenerykow(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+    schematHorneraBezGenerykow(rnd, 33.5)
   })
 
   println("czas - while - Bin:       " + measureTime {
-    schematHorneraWhile(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+    schematHorneraWhile(bin, 2)
   })
 
   println("czas - while - Rand:      " + measureTime {
-    schematHorneraWhile(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+    schematHorneraWhile(rnd, 33.5)
   })
 
   println("czas - pow - Bin:         " + measureTime {
-    bezHornera(List(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0), 2)
+    bezHornera(bin, 2)
   })
 
   println("czas - pow - Rand:        " + measureTime {
-    bezHornera(List(23.0, 32.0, 45.0, 15.5, 2.0, 3.0, 5.0, 1.5), 3.5)
+    bezHornera(rnd, 33.5)
   })
-  println()
 }
