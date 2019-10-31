@@ -1,6 +1,6 @@
 
 Dodaj2Binarne(A,B):[Int] // Dwie tablice zawierające l. binarnie zapisane
-  C <- [n] // C jest puste o rozmiarze n+1
+  C <- [n+1] // C jest puste o rozmiarze n+1
   for i <- 0 to n-1
     do sum <- A[i] + B[i] + C[i]
     C[i] <- sum % 2
@@ -12,7 +12,7 @@ Dodaj2U1(A,B) : ([Int],Bool) //Tablice o dlugosci n, zwraca tuple zawierającąj
   if length[C] > length[A]
     then 
       D <- [n]
-      D[0] <- 1 // pusta tablica o 1 na koncu
+      D[0] <- 1 // liczba binarna z 1 na koncu, 0...01
       C <- Dodaj2Binarne(C,D)) // przeniesienie poza znak
       C <- C.tail // porzucenie najstarszego bitu ktory wyszedl poza znak
   overFound  <- false
@@ -22,14 +22,12 @@ Dodaj2U1(A,B) : ([Int],Bool) //Tablice o dlugosci n, zwraca tuple zawierającąj
 
 
 LinearSearch<T>(A,x:T):Option[Int] // Tablica A o dł. n i szukany element x
-  s <- Nil
   for i <- 0 to n-1
     do
     if A[i] = x 
       then 
-        s <- i
-        break // moze zostac zastosowane po pierwszym znalezionym X aby zredukowac ilosc powtorzen petli
-  return s
+        return i
+  return Nil
 
 
 // funkcja wykorzystująca wywołanie rekurencyjne na posortowanej tablicy
@@ -40,11 +38,11 @@ BinarySearch(A,x):Option[Int] // tablica A, poczatkowa dl. tablicy, szukany
   m <- floor(length[A]/2)
   if A[m] = x 
     then return m
-    else if A[M] < x
+    else if A[M] > x
       then return BinarySearch(A.first(m),x)
-      else if A[M] > x
+      else if A[M] < x
         then c <- BinarySearch(A.last(length[A]-m),x)
           return length[A] - m + c 
           // musimy dodac dł. drugiej połowy 
           // poczatkowej tablicy aby indeks byl poprawny
-        else return Nil
+  return Nil
