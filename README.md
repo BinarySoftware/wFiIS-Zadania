@@ -3,7 +3,9 @@
 To repozytorium zawiera fragmenty kodu oraz pseudokodu
 napisanego na potrzeby zajęć podstaw informatyki na wFiIS AGH.
 
-### Jak uruchamiać moje programy?
+### Jak uruchamiać programy?
+
+#### Scala
 1. Upewnij się że posiadasz na komputerze JDK, Scala Compiler oraz SBT
 2. Otwórz Terminal i przejdź do wybranego programu, np `Horner`
 3. Uruchom Scala Build Tools komendą `sbt`
@@ -11,8 +13,13 @@ napisanego na potrzeby zajęć podstaw informatyki na wFiIS AGH.
    zestaw szerokich testów sprawdzających działanie przy różnych możliwych
    przypadkach. Dlatego aby sprawdzić czy dana funkcja działa należy ją
    uruchomić w środowisku testowym komendą `test`
-   
-## Horner
+
+#### Python
+1. Upewnij się że posiadasz na komputerze kompilator Pythona 3, w wersji >= 3.7
+2. Dla łatwości obsługi i edycji kodu zainstaluj IDE PyCharm
+3. W PyCharm po załadowaniu projektu wystarczy kliknąć zielony, trójkątny przycisk `run`
+
+## Horner `Scala`
 
 Prosta funkcja rekurencyjnie wyliczająca wynik wielomianu przy pomocy
 schematu Hornera, zaprezentowanego poniżej
@@ -34,7 +41,13 @@ schematu Hornera, zaprezentowanego poniżej
 | Łopatologiczne potęgowanie i mnożenie  |  Binarny      |    325671 |
 | Łopatologiczne potęgowanie i mnożenie      | Randomowy      |     52681 |
 
-## Min
+## Min `scala`
 
 Prostsza od Hornera funkcja rekurencyjnie szukająca najmniejszej wartości w
 zadanej liśce
+
+## Search `Python`
+
+Kod jest implementacją dwóch popularnych metod przeszukiwania tablic
+binarnego, oraz liniowego, przy czym przeszukiwanie binarne rozwiązałem
+dwoma metodami - pętlą while oraz rekurencyjnie.
