@@ -5,6 +5,13 @@ napisanego na potrzeby zajęć podstaw informatyki na wFiIS AGH.
 
 ### Jak uruchamiać programy?
 
+#### C
+1. Skompiluj wybrany program przy pomocy GCC:
+`gcc 'NAZWA'.c -o 'NAZWA'.o`
+Gdzie 'NAZWA' - to nazwa wybranego programu
+2. Uruchom program komendą:
+`./'NAZWA'.o`
+
 #### Scala
 1. Upewnij się że posiadasz na komputerze JDK, Scala Compiler oraz SBT
 2. Otwórz Terminal i przejdź do wybranego programu, np `Horner`
