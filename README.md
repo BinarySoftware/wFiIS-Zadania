@@ -1,9 +1,10 @@
 # Podstawy Informatyki
 
 To repozytorium zawiera fragmenty kodu oraz pseudokodu
-napisanego na potrzeby zajęć podstaw informatyki na wFiIS AGH.
+napisanego na potrzeby zajęć podstaw informatyki oraz 
+Programowania proceduralnego na wFiIS AGH.
 
-### Jak uruchamiać programy?
+<!-- ### Jak uruchamiać programy?
 
 #### C
 1. Skompiluj wybrany program przy pomocy GCC:
@@ -57,4 +58,4 @@ zadanej liśce
 
 Kod jest implementacją dwóch popularnych metod przeszukiwania tablic
 binarnego, oraz liniowego, przy czym przeszukiwanie binarne rozwiązałem
-dwoma metodami - pętlą while oraz rekurencyjnie.
+dwoma metodami - pętlą while oraz rekurencyjnie. -->
