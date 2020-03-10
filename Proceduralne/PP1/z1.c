@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define N 10
 
 int suma_rek(const int * pocz, const int * kon);
@@ -24,7 +25,7 @@ int main(void){
 }
 
 int suma_rek(const int * pocz, const int * kon) {
-    if (pocz < kon) 
+    if (pocz < kon)
         return *pocz + suma_rek(pocz+1, kon);
     else
         return *kon;

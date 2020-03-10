@@ -32,7 +32,6 @@ int main(void){
     for (int i = 0; i<N;i++){
         printf("tab1[%d] = %f\t tab2[%d] = %f\n", i, tab[i], i, tab2[i]);
     }
-
     return 0;
 }
 
@@ -48,8 +47,8 @@ void odwroc(float * pocz, float * kon){
     }
 }
 
-void wymien_tablice(float * pocz1, float * pocz2, float * kon){
-    for (int i = 0; i < (kon-pocz1); i++){
-        zamiana(pocz1+i,pocz2+i);
+void wymien_tablice(float * pocz1, float * pocz2, float * kon) {
+    for (int i = 0; i < (kon - pocz1); i++) {
+        zamiana(pocz1 + i, pocz2 + i);
     }
 }

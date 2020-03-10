@@ -2,7 +2,6 @@
 ###########
 ## Scala ##
 ###########
-
 target/
 *.class
 *.log
@@ -10,14 +9,11 @@ target/
 ############
 ## Python ##
 ############
-
 venv/
-
 
 ############
 ## System ##
 ############
-
 # OSX
 .DS_Store
 *.DS_Store
@@ -25,7 +21,6 @@ venv/
 ############
 ## Images ##
 ############
-
 *.jpg
 *.jpeg
 *.png
@@ -35,7 +30,6 @@ venv/
 ######################
 ## Tooling Specific ##
 ######################
-
 .idea/
 *.swp
 .projections.json
@@ -44,3 +38,11 @@ venv/
 ## IDE ##
 #########
 .editorconfig
+.idea
+
+#######
+## C ##
+#######
+cmake-build-debug
+*.o
+*.txt
