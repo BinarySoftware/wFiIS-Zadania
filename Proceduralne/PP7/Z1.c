@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 #define ROZMIAR 81        //maksymalna dlugość łańcuchów
 #define GRAN 21           // maksymalna liczba łańcuchów
 
@@ -44,8 +46,8 @@ int main(void){
 
     puts("\n Oto uporzadkowana lista:\n");
     for (k = 1; k < licz; k++){
-        puts(*(wsklan + k));  // z użyciem identyfikataora wsklan
-//        puts(dane[k]) ; // z użyciem identyfikataora dane
+//        puts(*(wsklan + k));  // z użyciem identyfikataora wsklan
+        puts(dane[k]) ; // z użyciem identyfikataora dane
 //        printf("wsk : %ld  tab: %ld\n", &wsklan[k][0], &dane[k][0]);
     }
     return 0;
@@ -57,13 +59,13 @@ void sortlan(char *lan[], int num) {
     for (int i = 1; i < num; i++) {
         for (int j = 1; j < num-1; j++) {
             if (strcmp(lan[j],lan[j+1]) > 0) {
-//                char temp[ROZMIAR];
-//                strcpy(temp,lan[j+1]);
-//                strcpy(lan[j+1],lan[j]);
-//                strcpy(lan[j],temp);
-                char * temp = lan[j+1];
-                lan[j+1]=lan[j];
-                lan[j]=temp;
+                char *temp = malloc(ROZMIAR* sizeof(char));
+                strcpy(temp,lan[j+1]);
+                strcpy(lan[j+1],lan[j]);
+                strcpy(lan[j],temp);
+//                char * temp = lan[j+1];
+//                lan[j+1]=lan[j];
+//                lan[j]=temp;
             }
         }
     }
