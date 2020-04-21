@@ -22,7 +22,7 @@ int main(){
     TAB_FUN[4] = NULL;
 
     char * nazwy[]={"log", "pow","sin","cos"};
-    char **s = nazwy;
+    char **str = nazwy;
 
     double (**wsk_fun)(double);
     wsk_fun = TAB_FUN;
@@ -30,17 +30,17 @@ int main(){
 
     while(*wsk_fun) { //pętla po wskaźnikach do funkcji
         for (int i = 0; i < 8; i++) { //pętla po argumentach
-            printf(" %s  %f  %.4f\n", *s, data[i], (*wsk_fun)(data[i]));
+            printf("%s(%.1f) = %.4f\n", *str, data[i], (*wsk_fun)(data[i]));
         }
         printf("\n");
         wsk_fun++;
-        s++;
+        str++;
     }
 
     double (**wskMax)(double);
     double var = 0.05;
     wskMax = findMax(TAB_FUN, var);
-    printf ("Najwieksza wartosc dla x=%.2f ma funkcja %s. Wartosc wynosi %f\n",
+    printf ("dla x= %f najwieksza wartosc ma %s, ktora wynosi %.3f\n",
             var, nazwy[wskMax - TAB_FUN], (*wskMax)(var));
     return 0;
 }

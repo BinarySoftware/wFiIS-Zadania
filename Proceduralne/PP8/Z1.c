@@ -3,7 +3,7 @@
 #include <string.h>
 
 int main(){
-    char pi_form[8]="";
+    char pi_form[7]="";
     int i;
     for (i=0; i<7; i+=2){
         sprintf(pi_form, "%%.%dlf",i); //zbudowanie łańcucha formatującego
