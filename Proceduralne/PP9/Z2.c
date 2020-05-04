@@ -22,8 +22,13 @@ int double_cmp(const void * a, const void * b){
 }
 
 /// MAIN
-int main(){
-    char szukanyString[]="Garcia";
+int main(int argc, char *argv[]){
+    if (argc < 3){
+        printf("Prosze podac 2 argumenty.");
+        return 1;
+    }
+
+    char *szukanyString=argv[1];
     char *strings[] = { "Alex", "Bill","Bill","Celine", "Dexter", "Forest","Forest","Garcia","Garcia","Garcia", "Pedro","Zorro"};
 
     size_t string_size = sizeof(strings[0]);
@@ -34,17 +39,26 @@ int main(){
         printf("Nie znaleziono '%s'\n", szukanyString);
     } else {
         int iloscWystapien = 0;
-        for(int i = 0; i < strings_len; i++){
-            if(strcmp(szukanyString, strings[i]) == 0){
-                iloscWystapien++;
-            }
+
+        // zliczanie po prawej stronie od znalezionego elementu
+        int i = 0;
+        while (pt-strings+i < strings_len && strcmp(*(pt+i), szukanyString) == 0){
+            iloscWystapien++;
+            i++;
         }
+        // zliczanie po lewej stronie od znalezionego elementu
+        i = 1;
+        while (pt-strings-i >= 0 && strcmp(*(pt-i), szukanyString) == 0){
+            iloscWystapien++;
+            i++;
+        }
+
         printf("%s na pozycji %ld, wystepuje %d razy.\n",*pt, pt-strings, iloscWystapien);
     }
 
 
 
-    double szukanyNumer = 5.67;
+    double szukanyNumer = atof(argv[2]);
     double numbers[] = {1.34, 1.34, 4.34, 5.55, 5.67, 5.67, 5.67, 7.76, 8.1, 8.1, 9.12, 11.23};
 
     size_t number_size = sizeof(numbers[0]);
@@ -55,11 +69,20 @@ int main(){
         printf("Nie znaleziono '%.2f'\n", szukanyNumer);
     } else {
         int iloscWystapien = 0;
-        for(int i = 0; i < numbers_len; i++){
-            if(fabs(szukanyNumer-numbers[i]) < 1e-6){
-                iloscWystapien++;
-            }
+
+        // zliczanie po prawej stronie od znalezionego elementu
+        int i = 0;
+        while (pt2-numbers+i < numbers_len && fabs(szukanyNumer-*(pt2+i)) < 1e-6){
+            iloscWystapien++;
+            i++;
         }
+        // zliczanie po lewej stronie od znalezionego elementu
+        i = 1;
+        while (pt2-numbers-i >= 0 && fabs(szukanyNumer-*(pt2-i)) < 1e-6){
+            iloscWystapien++;
+            i++;
+        }
+
         printf("%.2f na pozycji %ld, wystepuje %d razy.\n",*pt2, pt2-numbers, iloscWystapien);
     }
     return 0;

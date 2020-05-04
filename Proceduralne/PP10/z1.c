@@ -1,24 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
-char *concat(char *array[]){
-    char * result = malloc(sizeof(char));
-    int i = 0;
-    while (strlen(array[i]) != 0) { //FIXME: ex. 1. element is empty will f-up
-        result = realloc(result, (strlen(result) + strlen(array[i]))* sizeof(char));
-        result = strcat(result, array[i]);
-        i++;
-    }
-    return result;
-}
+void va_cat(char ** result, int num, ...);
 
 int main() {
-    char *strings[] = {"The sun did not shine.",
-                        "It was too wet to play.",
-                        " So we sat in the house - ",
-                        "All that cold, cold, wet day."};
-    char * cat = concat(strings);
-    printf("%s\n", cat);
+    char * concatenated = malloc(sizeof(char));
+    va_cat(&concatenated, 3, "If you never did You should.",
+            "These things are fun.",
+            "and Fun is good.");
+    printf("%s\n\n", concatenated);
+
+
+    va_cat(&concatenated, 4, "Sometimes ",
+           "you will never know ",
+           "the value of a moment ",
+           "until it becomes a memory.");
+    printf("%s\n", concatenated);
     return 0;
+}
+
+void va_cat(char ** result, int num, ...){
+    strcpy(*result, ""); //oczyszczenie po poprzedniej konkatenacji
+    va_list args;
+    va_start(args, num);
+    for(int i=0; i<num; i++){
+        char * temp = va_arg(args, char *);
+        *result = strcat(*result, temp);
+    }
+    va_end(args);
 }
