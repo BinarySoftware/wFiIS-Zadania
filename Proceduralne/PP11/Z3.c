@@ -7,7 +7,7 @@ struct xyz {
     struct xyz * pt;
 };
 
-struct xyz * xyzFileReader(FILE * plik){
+struct xyz * read_xyz_arr_from_bin(FILE * plik){
     int ilElem = 0;
     struct xyz *tab = NULL;
     while(!feof(plik)) {
@@ -19,65 +19,63 @@ struct xyz * xyzFileReader(FILE * plik){
     return tab;
 }
 
-int main() {
-    struct xyz a, b, c;
-    a.pt = &b;
-    b.pt = &c;
-    c.pt = &a;
-
+void xyz_decl_print_change(struct xyz *a, struct xyz *b, struct xyz *c) {
     // Przypisanie znakow przez zmienna 'a'
-    a.znak = 'a';
-    a.pt->znak = 'b';
-    a.pt->pt->znak = 'c';
+    a->znak = 'a';
+    a->pt->znak = 'b';
+    a->pt->pt->znak = 'c';
 
     // Odczyt znakow przez zmienna 'b'
-    printf("%c ,", b.pt->pt->znak);
-    printf("%c ,", b.znak);
-    printf("%c \n", b.pt->znak);
+    printf("%c ,", b->pt->pt->znak);
+    printf("%c ,", b->znak);
+    printf("%c \n", b->pt->znak);
 
     // Zmiana i odczyt znakow przez zmienna 'c'
-    c.znak = c.znak-32;
-    c.pt->znak = c.pt->znak-32;
-    c.pt->pt->znak = c.pt->pt->znak-32;
+    c->znak = c->znak - 32;
+    c->pt->znak = c->pt->znak - 32;
+    c->pt->pt->znak = c->pt->pt->znak - 32;
 
-    printf("%c ,", c.pt->znak);
-    printf("%c ,", c.pt->pt->znak);
-    printf("%c \n", c.znak);
+    printf("%c ,", c->pt->znak);
+    printf("%c ,", c->pt->pt->znak);
+    printf("%c \n", c->znak);
+}
 
-    // Zapisanie zmiennych do plikow
+void save_xyz_to_txt(struct xyz *a, struct xyz *b, struct xyz *c){
     FILE* data_text = fopen("data.txt", "w");
     if(data_text==NULL) {
         printf("Nie mozna otworzyc pliku\n");
-        return -1;
+        return;
     }
 
-    fprintf(data_text, "%c %p\n", a.znak, a.pt);
-    fprintf(data_text, "%c %p\n", b.znak, b.pt);
-    fprintf(data_text, "%c %p\n", c.znak, c.pt);
+    fprintf(data_text, "%c %p\n", a->znak, a->pt);
+    fprintf(data_text, "%c %p\n", b->znak, b->pt);
+    fprintf(data_text, "%c %p\n", c->znak, c->pt);
 
     fclose(data_text);
+}
 
-
+void save_xyz_to_bin(struct xyz *a, struct xyz *b, struct xyz *c){
     FILE* data_bin = fopen("data.dat", "wb");
     if(data_bin==NULL) {
         printf("Nie mozna otworzyc pliku\n");
-        return -1;
+        return;
     }
 
-    fwrite(&a, 1, sizeof(struct xyz), data_bin);
-    fwrite(&b, 1, sizeof(struct xyz), data_bin);
-    fwrite(&c, 1, sizeof(struct xyz), data_bin);
+    fwrite(a, 1, sizeof(struct xyz), data_bin);
+    fwrite(b, 1, sizeof(struct xyz), data_bin);
+    fwrite(c, 1, sizeof(struct xyz), data_bin);
 
     fclose(data_bin);
+}
 
-    // Odczyt z pliku binarnego
-    data_bin = fopen("data.dat", "rb");
+void read_bin(){
+    FILE* data_bin = fopen("data.dat", "rb");
     if(data_bin==NULL) {
         printf("Nie mozna otworzyc pliku\n");
-        return -1;
+        return;
     }
 
-    struct xyz * t = xyzFileReader(data_bin);
+    struct xyz * t = read_xyz_arr_from_bin(data_bin);
     int i = 0;
 
     printf("\nOdczyt z pliku binarnego:\n");
@@ -87,6 +85,23 @@ int main() {
     }
 
     free(t);
+}
+
+int main() {
+    struct xyz a, b, c;
+    a.pt = &b;
+    b.pt = &c;
+    c.pt = &a;
+
+    xyz_decl_print_change(&a, &b, &c);
+
+    // Zapisanie zmiennych do plikow
+    save_xyz_to_txt(&a,&b,&c);
+
+    save_xyz_to_bin(&a,&b,&c);
+
+    // Odczyt z pliku binarnego
+    read_bin();
 
     return 0;
 }

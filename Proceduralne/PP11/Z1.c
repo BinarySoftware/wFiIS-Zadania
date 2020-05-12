@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 double rand_double(double min, double max){
     double scale = rand() / (double) RAND_MAX;
@@ -11,8 +12,11 @@ void print_text_double(char * name){
     printf("\nTablica double z tekstu:\n");
     FILE* txtFile = fopen(name, "r");
     double d;
-    while(!feof(txtFile)) {
+    while(true) {
         fscanf(txtFile, "%lf", &d);
+        if (feof(txtFile)){
+            break;
+        }
         printf("%lf\n", d);
     }
     fclose(txtFile);
@@ -22,8 +26,11 @@ void print_bin_double(char * name){
     printf("\nTablica double z pliku binarnego:\n");
     FILE* binFile = fopen(name, "rb");
     double d;
-    while(!feof(binFile)) {
+    while(true) {
         fread(&d, 1, sizeof(double), binFile);
+        if (feof(binFile)){
+            break;
+        }
         printf("%lf\n", d);
     }
     fclose(binFile);
@@ -40,8 +47,72 @@ void print_file_size(char * name_bin, char * name_txt){
     long int fSizeTxt = ftell(flTxt);
     fclose(flTxt);
 
+    printf("\nRozmiary plikow:\n");
     printf("plik tekstowy -- %ld bajtow\n", fSizeTxt);
     printf("plik binarny -- %ld bajtow\n", fSizeBin);
+}
+
+void arr_from_text_file(char * name, FILE *textFile) {
+    double *arr = malloc(sizeof(double));
+    int arr_len = 0;
+    textFile = fopen(name, "r");
+    while(true) {
+        double temp;
+        fscanf(textFile, "%lf", &temp);
+        if (feof(textFile)) {
+            break;
+        }
+        arr_len++;
+        arr = realloc(arr, arr_len * sizeof(double));
+        arr[arr_len - 1] = temp;
+    }
+    fclose(textFile);
+
+    printf("\nTablica double z pliku tekstowego:\n");
+    for(int i = 0; i < arr_len; i++){
+        printf("%lf\n", arr[i]);
+    }
+
+    free(arr);
+}
+
+void arr_from_bin_file(char * name, FILE *binFile) {
+    double *arr = malloc(sizeof(double));
+    int arr_len = 0;
+    binFile = fopen(name, "rb");
+    while(true) {
+        double temp;
+        fread(&temp, 1, sizeof(double), binFile);
+        if (feof(binFile)) {
+            break;
+        }
+        arr_len++;
+        arr = realloc(arr, arr_len * sizeof(double));
+        arr[arr_len - 1] = temp;
+    }
+    fclose(binFile);
+
+    printf("\nTablica double z pliku binarnego:\n");
+    for(int i = 0; i < arr_len; i++){
+        printf("%lf\n", arr[i]);
+    }
+
+    free(arr);
+}
+
+void replace_every_fifth_element(char *name, FILE *binFile) {
+    printf("\nZamiana na zera co 5-tego elementu:\n");
+    binFile = fopen(name, "r+b");
+    fseek(binFile, 0, SEEK_END);
+    int len = ftell(binFile)/sizeof(double);
+    fseek(binFile, 0, SEEK_SET);
+    double zero = 0.0;
+    for (int i=0; i < len; i += 5){
+        fseek(binFile, i*sizeof(double), SEEK_SET );
+        fwrite(&zero, sizeof(zero), 1, binFile);
+    }
+    fclose(binFile);
+    print_bin_double(name);
 }
 
 int main(int argc, char** argv){
@@ -78,44 +149,9 @@ int main(int argc, char** argv){
     print_bin_double(argv[1]);
     print_file_size(argv[1], argv[2]);
 
+    arr_from_text_file(argv[2], textFile);
+    arr_from_bin_file(argv[1], binFile);
 
-    double *tab1;
-    int tab1_len = 0;
-    textFile = fopen(argv[2], "r");
-    while(!feof(textFile)) {
-        tab1_len++;
-        tab1 = realloc(tab1, tab1_len * sizeof(double));
-        fscanf(textFile, "%lf", tab1+(tab1_len-1));
-    }
-    fclose(textFile);
-
-    printf("\nTablica 1 - z pliku tekstowego:\n");
-    for(int i = 0; i < tab1_len; i++){
-        printf("%lf\n", tab1[i]);
-    }
-
-    double *tab2;
-    int tab2_len = 0;
-    binFile = fopen(argv[1], "rb");
-    while(!feof(binFile)) {
-        tab2_len++;
-        tab2 = realloc(tab2, tab2_len * sizeof(double));
-        fread(tab2+(tab2_len-1), 1, sizeof(double), binFile);
-    }
-    fclose(binFile);
-
-    printf("\nTablica 2 - z pliku binarnego:\n");
-    for(int i = 0; i < tab2_len; i++){
-        printf("%lf\n", tab2[i]);
-    }
-
-    binFile = fopen(argv[1], "r+b");
-    double zero = 0.0;
-    for (int i = 0; i < tab2_len; i+=5){
-        fseek(binFile, i*sizeof(double), SEEK_SET );
-        fwrite(&zero, sizeof(zero), 1, binFile);
-    }
-    fclose(binFile);
-    print_bin_double(argv[1]);
+    replace_every_fifth_element(argv[1], binFile);
     return 0;
 }
