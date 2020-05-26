@@ -10,11 +10,19 @@ struct tnode{
 };
 
 ///
-/// Funkcja zwalniajaca pamiec zajmowana przez liste jednokierunkowa
+/// Funkcja zwalniajaca pamiec zajmowana przez 2 listy jednokierunkowe
 ///
-void zwolnij(struct tnode *list){
-    struct tnode *node = list;
+void zwolnij(struct tnode *list_1, struct tnode *list_2){
+    struct tnode *node = list_1;
     struct tnode *next_ptr = NULL;
+    while (node != NULL && node->value != 0){
+        next_ptr = node->next;
+        free(node);
+        node = next_ptr;
+    }
+
+    node = list_2;
+    next_ptr = NULL;
     while (node != NULL){
         next_ptr = node->next;
         free(node);
@@ -60,29 +68,29 @@ struct tnode * dodaj_na_koniec(struct tnode *head, int val){
     return head;
 }
 
-void dodaj_na_koniec_dwoch(struct tnode **head_1 ,struct tnode **head_2, int val){
+void dodaj_na_koniec_dwoch(struct tnode **L_1 , struct tnode **L_2, int val){
     struct tnode *new_last_elem = malloc(sizeof(struct tnode));
     new_last_elem->value=val;
     new_last_elem->next=NULL;
 
-    if (*head_1 != NULL){
-        struct tnode *temp = *head_1;
+    if (*L_1 != NULL){
+        struct tnode *temp = *L_1;
         while(temp->next != NULL){
             temp = temp->next;
         }
         temp->next = new_last_elem;
     } else {
-        *head_1 = new_last_elem;
+        *L_1 = new_last_elem;
     }
 
-    if (*head_2 != NULL){
-        struct tnode *temp = *head_2;
+    if (*L_2 != NULL){
+        struct tnode *temp = *L_2;
         while(temp->next != NULL){
             temp = temp->next;
         }
         temp->next = new_last_elem;
     } else {
-        *head_2 = new_last_elem;
+        *L_2 = new_last_elem;
     }
 }
 
@@ -106,6 +114,20 @@ void reader(struct tnode **L_1, struct tnode **L_2) {
     }
 }
 
+int czy_wsp_element(struct tnode* L_1, struct tnode* L_2){
+    while(L_1 != NULL){
+        struct tnode* temp = L_2;
+        while(temp != NULL){
+            if(temp == L_1)
+                return 1;
+            else
+                temp = temp->next;
+        }
+        L_1 = L_1->next;
+    }
+    return 0;
+}
+
 ///
 /// MAIN
 ///
@@ -126,8 +148,12 @@ int main(int argc, char** argv) {
     printf("\nL_2 ");
     wypisz_adr(L_2);
 
-    // problem ze zwalnianiem pamieci po raz drugi tych samych pol. elementow
-    zwolnij(L_2);
-//    zwolnij(L_1);
+    if(czy_wsp_element(L_1, L_2)){
+        printf("\nListy maja wspolny element\n");
+    } else {
+        printf("\nListy nie maja wspolnego elementu\n");
+    }
+
+    zwolnij(L_1, L_2);
     return 0;
 }

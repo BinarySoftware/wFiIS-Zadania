@@ -36,32 +36,31 @@ void wypisz(struct tnode *head){
 ///
 /// Funkcja dodajaca element do uporzadkowanej listy jednokierunkowej
 ///
-struct tnode * dodaj_uporzadkowane(struct tnode *head, char val){
+void dodaj_uporzadkowane(struct tnode **head, char val){
     struct tnode *new_elem = malloc(sizeof(struct tnode));
     new_elem->value=val;
     new_elem->next=NULL;
 
-    if (head != NULL){
-        if (head->value > new_elem->value) {
-            new_elem->next = head;
-            head = new_elem;
-            return head;
+    if (*head != NULL){
+        if ((*head)->value > new_elem->value) {
+            new_elem->next = *head;
+            *head = new_elem;
+            return;
         }
 
-        struct tnode *temp = head;
+        struct tnode *temp = *head;
         while(temp->next != NULL){
             if (temp->next->value > new_elem->value) {
                 new_elem->next = temp->next;
                 temp->next = new_elem;
-                return head;
+                return;
             }
             temp = temp->next;
         }
         temp->next = new_elem;
     } else {
-        head = new_elem;
+        *head = new_elem;
     }
-    return head;
 }
 
 ///
@@ -97,19 +96,19 @@ int main(int argc, char** argv) {
     wypisz(lista_head);
 
     printf("Dodajemy: ['i']\n");
-    lista_head = dodaj_uporzadkowane(lista_head, 'i');
+    dodaj_uporzadkowane(&lista_head, 'i');
     printf("PO   : head ");
     wypisz(lista_head);
     printf("Dodajemy: ['w']\n");
-    lista_head = dodaj_uporzadkowane(lista_head, 'w');
+    dodaj_uporzadkowane(&lista_head, 'w');
     printf("PO   : head ");
     wypisz(lista_head);
     printf("Dodajemy: ['A']\n");
-    lista_head = dodaj_uporzadkowane(lista_head, 'A');
+    dodaj_uporzadkowane(&lista_head, 'A');
     printf("PO   : head ");
     wypisz(lista_head);
     printf("Dodajemy: ['Z']\n");
-    lista_head = dodaj_uporzadkowane(lista_head, 'Z');
+    dodaj_uporzadkowane(&lista_head, 'Z');
     printf("PO   : head ");
     wypisz(lista_head);
 
