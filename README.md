@@ -1,8 +1,8 @@
-# Podstawy Informatyki
+# wFIiS AGH - Rozwiązania zadań
 
 To repozytorium zawiera fragmenty kodu oraz pseudokodu
-napisanego na potrzeby zajęć podstaw informatyki oraz 
-Programowania proceduralnego na wFiIS AGH.
+napisanego na potrzeby zajęć podstaw informatyki, 
+Programowania proceduralnego oraz Scali na wFiIS AGH.
 
 <!-- ### Jak uruchamiać programy?
 
