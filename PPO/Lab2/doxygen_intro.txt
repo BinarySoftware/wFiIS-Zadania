@@ -1,0 +1,35 @@
+Dokumentacja doxygen:
+https://www.doxygen.nl/manual/index.html
+
+Tworzenie pliku konfiguracyjnego, który można edytować:
+doxygen -g
+
+Generacja dokumentacji:
+doxygen Doxyfile
+
+Sposoby dokumentacji: 
+https://www.doxygen.nl/manual/docblocks.html
+
+
+Przykłady:
+
+int var; ///< krotki opis
+int var1; /**< szczegolowy opis */
+
+
+
+/// krotki opis
+/** dlugi opis
+*   @param x opis argumentu    
+    @return cos
+*/
+float funkcja(float x);
+/**
+* @brief krotki opis
+* 
+* dlugi opis
+* @param size opis parametru
+* @return cos, @warning ostrzezenie
+* @see funkcja()
+*/
+int* jakasFunkcja(int size);

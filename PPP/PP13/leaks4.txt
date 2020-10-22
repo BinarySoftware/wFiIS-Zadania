@@ -1,0 +1,28 @@
+PRZED: lista 1 -> ['a'] -> ['k'] -> ['l'] -> ['z'] -> NULL
+       lista 2 -> ['a'] -> ['b'] -> ['n'] -> ['l'] -> ['w'] -> NULL
+PO: lista -> ['a'] -> ['a'] -> ['b'] -> ['k'] -> ['l'] -> ['n'] -> ['l'] -> ['w'] -> ['z'] -> NULL
+    lista 1 -> NULL
+    lista 2 -> NULL
+Process:         z4.o [94031]
+Path:            /Users/USER/*/z4.o
+Load Address:    0x10a43e000
+Identifier:      z4.o
+Version:         ???
+Code Type:       X86-64
+Parent Process:  leaks [94030]
+
+Date/Time:       2020-05-26 10:43:02.763 +0200
+Launch Time:     2020-05-26 10:43:02.512 +0200
+OS Version:      Mac OS X 10.15.4 (19E287)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.5 (11E608c)
+
+Physical footprint:         404K
+Physical footprint (peak):  404K
+----
+
+leaks Report Version: 4.0
+Process 94031: 157 nodes malloced for 12 KB
+Process 94031: 0 leaks for 0 total leaked bytes.
+

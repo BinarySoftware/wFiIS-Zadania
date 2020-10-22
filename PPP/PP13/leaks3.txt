@@ -1,0 +1,27 @@
+PRZED: head -> ['a'] -> ['t'] -> ['o'] -> ['k'] -> [' '] -> ['a'] -> ['m'] -> [' '] -> ['a'] -> ['l'] -> ['A'] -> NULL
+wywolanie funkcji dla liter 'a'
+PO: head -> ['t'] -> ['o'] -> ['k'] -> [' '] -> ['m'] -> [' '] -> ['l'] -> NULL
+    left -> ['a'] -> ['a'] -> ['a'] -> ['A'] -> NULL
+Process:         z3.o [94223]
+Path:            /Users/USER/*/z3.o
+Load Address:    0x10af6b000
+Identifier:      z3.o
+Version:         ???
+Code Type:       X86-64
+Parent Process:  leaks [94222]
+
+Date/Time:       2020-05-26 10:43:07.371 +0200
+Launch Time:     2020-05-26 10:43:07.123 +0200
+OS Version:      Mac OS X 10.15.4 (19E287)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.5 (11E608c)
+
+Physical footprint:         404K
+Physical footprint (peak):  404K
+----
+
+leaks Report Version: 4.0
+Process 94223: 157 nodes malloced for 12 KB
+Process 94223: 0 leaks for 0 total leaked bytes.
+

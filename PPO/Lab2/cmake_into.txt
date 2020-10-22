@@ -1,0 +1,46 @@
+CMake - narzędzie do automatycznego zarządzania procesem kompilacji programu
+Zachęcam do przejrzenia dokumentacji CMake:
+https://cmake.org/cmake/help/latest/index.html 
+
+Minimum do skompilowania programów pisanych podczas zajęć z PPO:
+
+###################################################################
+W pliku CMakeLists.txt:
+
+#ustawienie wersji CMake
+cmake_minimum_required(VERSION 3.10)
+
+#nazwa projektu
+project(lab_ppo)
+
+# dodanie pliku wykonywalnego
+add_executable(Main main.cpp)
+
+#w przypadku kilku plików źródłowych
+#add_executable(Main main.cpp test.cpp files.cpp)
+
+
+###################################################################
+Budowanie programu:
+mkdir build
+cd build
+cmake ..
+make
+
+
+###################################################################
+
+Dodatkowe polecenia:
+
+#ustawienie flag podczas kompilacji
+set (CMAKE_CXX_FLAGS "-Wall -g")
+
+# ustawienie standardu C++
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+
+#definiowanie zmiennych
+set(SOURCES main.cpp test.cpp files.cpp)
+add_executable(Main ${SOURCES})
+

@@ -1,0 +1,25 @@
+PRZED: head -> ['f'] -> ['d'] -> ['u'] -> ['i'] -> NULL
+PO   : head -> ['i'] -> ['u'] -> ['d'] -> ['f'] -> NULL
+Process:         z1.o [94607]
+Path:            /Users/USER/*/z1.o
+Load Address:    0x106186000
+Identifier:      z1.o
+Version:         ???
+Code Type:       X86-64
+Parent Process:  leaks [94606]
+
+Date/Time:       2020-05-26 10:43:17.122 +0200
+Launch Time:     2020-05-26 10:43:16.868 +0200
+OS Version:      Mac OS X 10.15.4 (19E287)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.5 (11E608c)
+
+Physical footprint:         404K
+Physical footprint (peak):  404K
+----
+
+leaks Report Version: 4.0
+Process 94607: 157 nodes malloced for 12 KB
+Process 94607: 0 leaks for 0 total leaked bytes.
+

@@ -1,0 +1,30 @@
+Podaj l. naturalna: Podaj l. naturalna: Podaj l. naturalna: Podaj l. naturalna: Podaj l. naturalna: Podaj l. naturalna: L_1 -> ['4'] -> ['0'] -> ['4'] -> NULL
+L_2 -> ['5'] -> ['3'] -> ['0'] -> ['4'] -> NULL
+
+Adresy - dowód połączenia list przy 0:
+L_1 -> ['0x7fa9eee04080'] -> ['0x7fa9eee040a0'] -> ['0x7fa9eee040b0'] 
+L_2 -> ['0x7fa9eed04080'] -> ['0x7fa9eee04090'] -> ['0x7fa9eee040a0'] -> ['0x7fa9eee040b0'] 
+Listy maja wspolny element
+Process:         z5.o [93633]
+Path:            /Users/USER/*/z5.o
+Load Address:    0x1084b4000
+Identifier:      z5.o
+Version:         ???
+Code Type:       X86-64
+Parent Process:  leaks [93632]
+
+Date/Time:       2020-05-26 10:42:51.876 +0200
+Launch Time:     2020-05-26 10:42:40.148 +0200
+OS Version:      Mac OS X 10.15.4 (19E287)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.5 (11E608c)
+
+Physical footprint:         432K
+Physical footprint (peak):  432K
+----
+
+leaks Report Version: 4.0
+Process 93633: 158 nodes malloced for 16 KB
+Process 93633: 0 leaks for 0 total leaked bytes.
+
