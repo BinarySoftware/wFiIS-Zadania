@@ -1,0 +1,3 @@
+/Users/maciej/Downloads/Lab6Czw/build/CMakeFiles/rebuild_cache.dir
+/Users/maciej/Downloads/Lab6Czw/build/CMakeFiles/edit_cache.dir
+/Users/maciej/Downloads/Lab6Czw/build/CMakeFiles/Lab06.dir

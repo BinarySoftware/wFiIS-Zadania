@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maciej/Downloads/Lab11Czw/Vector2D.cpp
+Vector2D.h
+/Users/maciej/Downloads/Lab11Czw/Vector2D.h
+math.h
+-
+
+/Users/maciej/Downloads/Lab11Czw/Vector2D.h
+iostream
+-
+

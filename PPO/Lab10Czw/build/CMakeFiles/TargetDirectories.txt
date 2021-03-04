@@ -1,0 +1,4 @@
+/Users/maciej/Downloads/Lab10Czw/build/CMakeFiles/rebuild_cache.dir
+/Users/maciej/Downloads/Lab10Czw/build/CMakeFiles/edit_cache.dir
+/Users/maciej/Downloads/Lab10Czw/build/CMakeFiles/CPPLab.dir
+/Users/maciej/Downloads/Lab10Czw/build/CMakeFiles/CPPLabSolution.dir

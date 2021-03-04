@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maciej/Downloads/Lab8czw/MapDistance.h
+
+/Users/maciej/Downloads/Lab8czw/MapPoint.h
+MapDistance.h
+/Users/maciej/Downloads/Lab8czw/MapDistance.h
+
+/Users/maciej/Downloads/Lab8czw/main.cpp
+iostream
+-
+MapDistance.h
+/Users/maciej/Downloads/Lab8czw/MapDistance.h
+MapPoint.h
+/Users/maciej/Downloads/Lab8czw/MapPoint.h
+MapPoint.h
+/Users/maciej/Downloads/Lab8czw/MapPoint.h
+MapDistance.h
+/Users/maciej/Downloads/Lab8czw/MapDistance.h
+

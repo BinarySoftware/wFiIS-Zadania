@@ -1,0 +1,3 @@
+/Users/maciej/Downloads/lab7czw/build/CMakeFiles/rebuild_cache.dir
+/Users/maciej/Downloads/lab7czw/build/CMakeFiles/edit_cache.dir
+/Users/maciej/Downloads/lab7czw/build/CMakeFiles/Lab07.dir

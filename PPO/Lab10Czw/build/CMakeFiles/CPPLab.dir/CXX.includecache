@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maciej/Downloads/Lab10Czw/Prezent.h
+
+/Users/maciej/Downloads/Lab10Czw/Worek.h
+Prezent.h
+/Users/maciej/Downloads/Lab10Czw/Prezent.h
+
+/Users/maciej/Downloads/Lab10Czw/main.cpp
+iostream
+-
+Prezent.h
+/Users/maciej/Downloads/Lab10Czw/Prezent.h
+Worek.h
+/Users/maciej/Downloads/Lab10Czw/Worek.h
+

@@ -1,8 +1,14 @@
 # wFIiS AGH - Rozwiązania zadań
 
 To repozytorium zawiera fragmenty kodu oraz pseudokodu
-napisanego na potrzeby zajęć podstaw informatyki, 
-Programowania proceduralnego oraz Scali na wFiIS AGH.
+napisanego przeze mnie na potrzeby zajęć:
+- Podstaw Informatyki (2019)
+- Podstaw Programowania Proceduralnego (2020)
+- Podstaw Programowaniia Obiektowego (2020)
+- Functional Programming in Scala (2020)
+- Programowania Obiektowego 1 (2021)
+- Metod Numerycznych (2021)
+- Python (2021)
 
 <!-- ### Jak uruchamiać programy?
 
